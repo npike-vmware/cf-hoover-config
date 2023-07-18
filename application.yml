@@ -1,0 +1,33 @@
+cf:
+  butlers:
+    npike-demo: cf-butler.apps.watsonville.cf-app.com
+    #ironleg: cf-butler.apps.demo.ironleg.me
+  sslValidationSkipped: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info,health,metrics,scheduledtasks,loggers,prometheus
+  endpoint:
+    health:
+      show-details: always
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+
+spring:
+  cloud:
+    config:
+      enabled: false
+
+---
+spring:
+  config:
+    activate:
+      on-profile: cloud
+
+  cloud:
+    config:
+      enabled: true
